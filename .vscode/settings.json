@@ -1,0 +1,13 @@
+{
+    "cSpell.words": [
+        "protxt",
+        "stopwords",
+        "keras",
+        "jsonify",
+        "worddd",
+        "wordaver",
+        "gunicorn",
+        "wsgiapp"
+    ],
+    "python.analysis.typeCheckingMode": "off"
+}
