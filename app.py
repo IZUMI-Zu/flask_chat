@@ -4,7 +4,7 @@
 
 import re
 from flask import Flask, request, jsonify
-from keras.preprocessing.sequence import pad_sequences
+from keras_preprocessing.sequence import pad_sequences
 from keras.models import load_model
 from sklearn.metrics.pairwise import cosine_similarity
 
@@ -14,7 +14,7 @@ from utils import select_chinese, pro_sentence, get_index, judge, \
 app = Flask(__name__)
 
 MAX_SEQ_LENGTH = 30 # will set this manually for demo
-MODEL_NAME = 'model.h5' # will set this manually for demo
+MODEL_NAME = 'first_model.h5' # will set this manually for demo
 MODEL_PATH_PREFIX = './model/' # will set this manually for demo
 
 @app.route('/api/predict', methods=['POST'])
@@ -62,11 +62,11 @@ def predict():
 def similarity():
     """
     The function is a Flask route handler that takes a POST request containing two pieces of text and
-    returns a JSON object containing the cosine similarity between them (as computed using a pretrained 
+    returns a JSON object containing the cosine similarity between them (as computed using a pre-trained 
     Word2Vec model) and a quantized similarity score ('low', 'middle', 'high').
 
     The POST request should include a JSON object with 's1' and 's2' keys, each corresponding to a piece
-    of text. The function preprocesses and vectorizes these texts, computes their cosine similarity, and 
+    of text. The function pre-processes and vectorizes these texts, computes their cosine similarity, and 
     uses this similarity to determine whether the similarity is 'low' (score <= 0.6), 'middle' 
     (0.6 < score <= 0.75), or 'high' (score > 0.75).
 
@@ -106,4 +106,4 @@ def similarity():
 
     return jsonify(result)  
 
-    
+
