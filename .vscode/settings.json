@@ -7,7 +7,12 @@
         "worddd",
         "wordaver",
         "gunicorn",
-        "wsgiapp"
+        "wsgiapp",
+        "jieba",
+        "sklearn",
+        "vectorizes",
+        "gensim",
+        "CUDA"
     ],
     "python.analysis.typeCheckingMode": "off"
 }
