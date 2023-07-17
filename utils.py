@@ -19,12 +19,15 @@ Higher scores indicate more positive sentiment.
 """
 
 import re
+import gensim
 import jieba
 import numpy as np
 from gensim.models import word2vec
 
 STOPWORDS_FILE = './static/hit_stopwords.txt' # path to stopwords file
-WORD_2_VEC_MODEL = './model/worddd.model' # path to word2vec model
+MODEL_PREFIX = './model/'
+WORD_2_VEC_MODEL = 'worddd.model' # path to word2vec model
+MODEL_VECTOR = 'word_data.vector'
 
 def read_txt(string: str):
     """ 
@@ -200,7 +203,7 @@ def mark_score(score):
     else:
         print("文本相似度高")
 
-def load_word2vec_model(model_path=WORD_2_VEC_MODEL):
+def load_word2vec_model(model_path=MODEL_PREFIX + WORD_2_VEC_MODEL):
     """
     This function is used to load a pre-trained Word2Vec model from a given path.
 
@@ -217,7 +220,6 @@ def load_word2vec_model(model_path=WORD_2_VEC_MODEL):
     - The function depends on the gensim.models.Word2Vec model.
     - The model at the specified path should be a saved Word2Vec model.
     """
-    return word2vec.Word2Vec.load(model_path)
-
-
-    
+    model = gensim.models.Word2Vec.load(model_path)
+    model.wv.load_word2vec_format(MODEL_PREFIX + MODEL_VECTOR, binary=False)
+    return model
