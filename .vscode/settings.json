@@ -12,7 +12,9 @@
         "sklearn",
         "vectorizes",
         "gensim",
-        "CUDA"
+        "CUDA",
+        "argmax",
+        "Bahdanau"
     ],
     "python.analysis.typeCheckingMode": "off"
 }
