@@ -1,0 +1,27 @@
+{
+    "version": 2,
+    "name": "flask-api",
+    "builds": [
+      {
+        "src": "api.py",
+        "use": "@vercel/python"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/api/predict",
+        "methods": ["POST"],
+        "dest": "/api.py"
+      },
+      {
+        "src": "/api/similarity",
+        "methods": ["POST"],
+        "dest": "/api.py"
+      },
+      {
+        "src": "/api/chat",
+        "methods": ["POST"],
+        "dest": "/api.py"
+      }
+    ]
+  }
