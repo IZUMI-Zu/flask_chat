@@ -162,3 +162,7 @@ cython_debug/
 
 #test
 /test
+
+#model file
+/model
+model.tar.gz
