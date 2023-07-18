@@ -134,6 +134,6 @@ def chat():
     data = request.get_json(force=True) # get data from POST request
     text = data['text']
     
-    result = {"text": str(predictor.predict_(text))}
+    result = {"text": str(predictor.predict(text))}
     return jsonify(result)
 

@@ -8,11 +8,12 @@ RUN apt-get update && apt-get install -y \
     tar \
     wget \
     gunicorn \
+    git \
     --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
-COPY . /app/
+RUN git clone https://github.com/IZUMI-Zu/flask_chat.git . && rm -rf .git
 
-RUN /app/bin/install && . /app/flask_venv/bin/activate
+RUN /app/bin/install && . /app/${VENV_NAME}/bin/activate
 
-CMD [ "/app/bin/start" ]
+CMD [ "sh", "-c", ". /app/${VENV_NAME}/bin/activate && /app/bin/start" ]
