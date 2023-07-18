@@ -1,13 +1,14 @@
 import json
 import tensorflow as tf
 
-from chat_box.bahdanau_attention import BahdanauAttention
 from chat_box.decoder import Decoder
 from chat_box.encoder import Encoder
 
 class ModelPredictor:
-    def __init__(self):
-        pass
+    def __init__(self, model, input_tokenizer, target_tokenizer):
+        self.model_path = model
+        self.input_tokenizer_path = input_tokenizer
+        self.target_tokenizer_path = target_tokenizer
 
     def tokenize(self, vocab):
         """
@@ -69,10 +70,10 @@ class ModelPredictor:
         optimizer1 = tf.keras.optimizers.Adam()
         checkpoint1 = tf.train.Checkpoint(optimizer=optimizer1, encoder=encoder1, decoder=decoder1)
 
-        input_tokenizer = self.tokenize("model/inp.vocab")
-        target_tokenizer = self.tokenize("model/tar.vocab")
+        input_tokenizer = self.tokenize(self.input_tokenizer_path)
+        target_tokenizer = self.tokenize(self.target_tokenizer_path)
 
-        checkpoint_dir = 'model/model_data'
+        checkpoint_dir = self.model_path
         checkpoint1.restore(tf.train.latest_checkpoint(checkpoint_dir))
 
         sentence = self.preprocess_sentence(sentence)
