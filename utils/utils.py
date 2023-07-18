@@ -179,30 +179,6 @@ def wordaver(model, words):
     """
     return np.mean([model.wv.get_vector(word) for word in words],axis=0)
 
-
-def mark_score(score):
-    """
-    This function categorizes a given score into one of three categories.
-
-    The function takes a score (presumably a similarity score between two texts) 
-    and marks it as 'high', 'medium', or 'low' based on its value.
-
-    Args: 
-    - score: A float that represents a similarity score.
-
-    Prints:
-    - "文本相似度高" if the score is greater than  0.75.
-    - "文本相似度中" if the score is between 0.6 and 0.75.
-    - "文本相似度低" if the score is less than or equal to 0.6.
-
-    """
-    if score <= 0.6:
-        print("文本相似度低")
-    elif score <= 0.75:
-        print("文本相似度中")
-    else:
-        print("文本相似度高")
-
 def load_word2vec_model(model_path=MODEL_PREFIX + WORD_2_VEC_MODEL):
     """
     This function is used to load a pre-trained Word2Vec model from a given path.

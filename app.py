@@ -7,8 +7,9 @@ from flask import Flask, request, jsonify
 from keras_preprocessing.sequence import pad_sequences
 from keras.models import load_model
 from sklearn.metrics.pairwise import cosine_similarity
+from chat_box.model_predictor import ModelPredictor
 
-from utils import select_chinese, pro_sentence, get_index, judge, \
+from utils.utils import select_chinese, pro_sentence, get_index, judge, \
     split_sentence, wordaver, load_word2vec_model
 
 app = Flask(__name__)
@@ -106,4 +107,14 @@ def similarity():
 
     return jsonify(result)  
 
+@app.route('/api/chat', methods=['POST'])
+def chat():
+
+    predictor = ModelPredictor('model/model_data', "model/inp.vocab", "model/tar.vocab")
+
+    data = request.get_json(force=True) # get data from POST request
+    text = data['text']
+    
+    result = {"text": str(predictor.predict_(text))}
+    return jsonify(result)
 
