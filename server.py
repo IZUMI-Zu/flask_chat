@@ -17,9 +17,6 @@ machine does not possess a GPU or the CUDA toolkit, this environment setting may
 
 This script is typically used in production environments where a robust, extensible, and 
 performant server like Gunicorn would be required over Flask's built-in server.
-
-Usage:
-    python main.py
 """
 import sys
 import os

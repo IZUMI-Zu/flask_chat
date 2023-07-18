@@ -1,5 +1,24 @@
 """
-    TODO
+This module implements a Flask server with three endpoints for different tasks: sentiment prediction, text similarity,
+and chat-based responses.
+
+The sentiment prediction endpoint takes a POST request with JSON data containing raw text. It processes the text,
+performs sentiment prediction using a trained model, and returns the sentiment and the model's score.
+
+The text similarity endpoint takes a POST request with JSON data containing two pieces of text. It computes the cosine
+similarity between the texts using a pre-trained Word2Vec model and returns the similarity score and a quantized
+similarity level.
+
+The chat endpoint takes a POST request with JSON data containing a text message. It uses a pre-trained chat model to
+generate a response to the message and returns the generated response.
+
+The module also includes utility functions for text preprocessing and vectorization.
+
+Note:
+- Before running the server, make sure to set the appropriate values for `MAX_SEQ_LENGTH`, `MODEL_NAME`,
+  and `MODEL_PATH_PREFIX`.
+- The module assumes the existence of external functions `select_chinese()`, `pro_sentence()`, `get_index()`,
+  `judge()`, `split_sentence()`, `wordaver()`, and `load_word2vec_model()`. Make sure they are defined and accessible.
 """
 
 import re
