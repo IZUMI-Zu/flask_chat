@@ -112,8 +112,8 @@ def similarity():
     text2_pre = pro_sentence(select_chinese(text2))
     text2 = split_sentence(text2_pre)
 
-    s1_aver = wordaver(model, text1) #s1的向量表示
-    s2_aver = wordaver(model, text2) #s2的向量表示
+    s1_aver = wordaver(model, text1)
+    s2_aver = wordaver(model, text2)
 
     scores = cosine_similarity(s1_aver.reshape(1,-1),s2_aver.reshape(1,-1))
 
@@ -128,12 +128,27 @@ def similarity():
 
 @app.route('/api/chat', methods=['POST'])
 def chat():
+    """
+    This function provides an API endpoint for a chat function.
+    A POST request to '/api/chat' with a 'text' field in the JSON body
+    will return a prediction from an AI model of a conversation.
 
+    It uses a ModelPredictor instance to run prediction on input text.
+    ModelPredictor is instantiated with a model and vocabulary files.
+
+    Args:
+        No direct arguments but expects data from POST request containing
+        'text' key in JSON format.
+
+    Returns:
+        A JSON response containing a 'text' field with the predicted 
+        conversation from the model.
+    """
     predictor = ModelPredictor('model/model_data', "model/inp.vocab", "model/tar.vocab")
 
-    data = request.get_json(force=True) # get data from POST request
+    data = request.get_json(force=True)  # get data from POST request
     text = data['text']
-    
+
     result = {"text": str(predictor.predict(text))}
     return jsonify(result)
 
