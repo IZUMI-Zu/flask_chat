@@ -11,6 +11,7 @@ Prerequisites:
 Install: `bin/install`
 - creates virtual env
 - installs dependencies from `requirements.txt`
+- download model
 
 Run: `bin/start`
 - runs a `gunicorn` server
