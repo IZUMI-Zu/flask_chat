@@ -1,14 +1,6 @@
-# Flask API Starter
+# Flask API
 
-This is the simplest possible python api using flask that responds with: 
-```
-Hello, world!
-```
-
-## Deploy to Cyclic in seconds 
-
-[![Deploy to Cyclic](https://deploy.cyclic.app/button.svg)](https://deploy.cyclic.app/)
-
+This is the simplest possible python api using flask
 
 ## Run Locally
 
@@ -23,9 +15,3 @@ Install: `bin/install`
 Run: `bin/start`
 - runs a `gunicorn` server
 
-
-## Questions / Help
-
-Join us on Discord: [https://discord.cyclic.sh](https://discord.cyclic.sh)
-
-Enjoy!
