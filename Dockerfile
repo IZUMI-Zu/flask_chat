@@ -2,7 +2,7 @@ FROM python:3.10-bullseye
 
 WORKDIR /app
 
-ENV VENV_NAME=flask_venv TAG=v0.2.0 MODEL_FILE_NAEME=model.tar.gz
+ENV VENV_NAME=flask_venv TAG=v0.3.0 MODEL_FILE_NAEME=model.tar.gz
 
 RUN apt-get update && apt-get install -y \
     tar \
