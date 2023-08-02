@@ -1,6 +1,6 @@
 $VENV_NAME="flask_venv"
 $MODEL_FILE_NAME="model.tar.gz"
-$TAG="v0.2.0"
+$TAG="v0.3.0"
 
 py -m venv "${VENV_NAME}"
 . "${VENV_NAME}/Scripts/activate.ps1"
